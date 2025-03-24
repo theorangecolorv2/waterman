@@ -79,6 +79,7 @@ def focus_launcher(launcher_path=None):
 
 def select_next_account(current_account=1):
     time.sleep(2)
+
     print(f"Выбираю аккаунт {current_account}")
     account_path = f"{ACCOUNTS_FOLDER}/account_{current_account}.png"
     print(f"Ищу изображение: {account_path}")
@@ -88,6 +89,9 @@ def select_next_account(current_account=1):
 
 
 def launch_game():
+    if exists("./assets/update.png"):
+        print("Ждем обновление")
+        wait("./assets/play_button.png", duration=90)
     lclick_on_image("./assets/play_button.png")
     time.sleep(4)
     wait("./assets/nes.png", duration=40)

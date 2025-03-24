@@ -6,14 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f24ee1d0-3af8-4bca-ac76-d8c605d0886e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/download_weights.bat" beforeDir="false" afterPath="$PROJECT_DIR$/download_weights.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/research.py" beforeDir="false" afterPath="$PROJECT_DIR$/research.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/run.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup_first_time.bat" beforeDir="false" afterPath="$PROJECT_DIR$/setup_first_time.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/update_files.bat" beforeDir="false" afterPath="$PROJECT_DIR$/update_files.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/update_files_no_git.bat" beforeDir="false" afterPath="$PROJECT_DIR$/update_files_no_git.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/662x662.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/662x662.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bot_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/bot_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create_shortcut.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/swap_accounts.py" beforeDir="false" afterPath="$PROJECT_DIR$/swap_accounts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

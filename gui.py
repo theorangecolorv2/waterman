@@ -310,10 +310,9 @@ class BotConfigGUI:
             # Обновляем модуль config.py
             self.update_config_module(config)
             
-            messagebox.showinfo("Успех", "Настройки успешно сохранены!")
+
             self.log("Настройки успешно сохранены")
         except Exception as e:
-            messagebox.showerror("Ошибка", f"Не удалось сохранить настройки: {str(e)}")
             self.log(f"Ошибка сохранения настроек: {str(e)}")
     
     def update_config_module(self, config):
@@ -341,7 +340,6 @@ class BotConfigGUI:
             import config
             importlib.reload(config)
         except Exception as e:
-            messagebox.showerror("Ошибка", f"Не удалось обновить модуль config.py: {str(e)}")
             self.log(f"Ошибка обновления config.py: {str(e)}")
     
     def load_config(self):
@@ -358,7 +356,6 @@ class BotConfigGUI:
                 self.loop_limit_var.set(config.get("loop_limit", LOOP_LIMIT))
                 self.random_actions_var.set(config.get("random_actions", RANDOM_ACTIONS))
         except Exception as e:
-            messagebox.showerror("Ошибка", f"Не удалось загрузить настройки: {str(e)}")
             self.log(f"Ошибка загрузки настроек: {str(e)}")
     
     def start_bot(self):
