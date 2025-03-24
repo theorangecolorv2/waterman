@@ -334,7 +334,7 @@ class BotConfigGUI:
                 f.write(f'# Лимит повторений цикла\n')
                 f.write(f'LOOP_LIMIT = {config["loop_limit"]}\n\n')
                 f.write(f'# Выполнять рандомные действия\n')
-                f.write(f'RANDOM_ACTIONS = {config["random_actions"]}')
+                f.write(f'RANDOM_ACTIONS = {config["random_actions"]}\n')
             
             # Перезагружаем модуль
             import config
