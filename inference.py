@@ -69,7 +69,7 @@ def humanize_points(box, img_size=(662, 662), max_deviation=11):
     return humanized_points
 
 
-def click_rectangle(box, corner, delay=0.1, humanize=True, img_size=(662, 662)):
+def click_rectangle(box, corner, delay=0.3, humanize=True, img_size=(662, 662)):
     """
     Кликает по прямоугольнику, создавая 'человеческие' клики с небольшими отклонениями
     
@@ -302,12 +302,12 @@ def analyze_image(image_path, corner):
                 pt2 = tuple(map(int, humanized_points[i+1]))
                 cv2.line(humanized_vis_img, pt1, pt2, (0, 0, 255), 2)
             
-            print(f"Clicking rectangle: {x1},{y1} - {x2},{y2}")
+            #print(f"Clicking rectangle: {x1},{y1} - {x2},{y2}")
             # Используем гуманизированные клики
             click_rectangle(box, corner, delay=0.1, humanize=True, img_size=img_size)
 
         # Показываем оба результата для сравнения
-        combined_img = np.hstack((vis_image, humanized_vis_img))
-        cv2.imshow("Results (Left: Original, Right: Humanized)", combined_img)
-        cv2.waitKey(30000)
-        cv2.destroyAllWindows()
+        # combined_img = np.hstack((vis_image, humanized_vis_img))
+        # cv2.imshow("Results (Left: Original, Right: Humanized)", combined_img)
+        # cv2.waitKey(30000)
+        # cv2.destroyAllWindows()

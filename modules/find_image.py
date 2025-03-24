@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from cv2 import imread, COLOR_BGR2GRAY, matchTemplate, TM_CCOEFF_NORMED, imshow, waitKey, rectangle, \
     COLOR_BGR2HSV, boundingRect, inRange, countNonZero, RETR_EXTERNAL, CHAIN_APPROX_SIMPLE, imread, cvtColor, Canny, \
     findContours, drawContours, mean, contourArea, FILLED, \
@@ -9,8 +11,8 @@ from logging import basicConfig, info, INFO
 import time
 
 
-
-LOGS_DIR = os.path.join(os.path.abspath("C:\\Users\\theorr\\PycharmProjects\\evebot\\logs"), "logs")  # Adjusted to point directly to logs directory
+# Создаем директорию для логов относительно текущей директории
+LOGS_DIR = os.path.join(os.getcwd(), "logs")
 LOG_FILE = "logs.log"
 LOGS_PATH = os.path.join(LOGS_DIR, LOG_FILE)
 
@@ -75,9 +77,8 @@ def make_template(finding_element: str, region: tuple = (0, 0, 1920, 1920), acc:
         return []
 
 
-def make_screenshot() -> str:
-    image_path = "./assets/eve_screen.png"
-
+def make_screenshot(image_path = "../assets/temp_screenshot.png") -> str:
+    image_path = image_path
     directory = os.path.dirname(image_path)
 
     if not os.path.exists(directory):
@@ -85,6 +86,19 @@ def make_screenshot() -> str:
 
     src = pyautogui.screenshot(image_path)
     src.save(image_path)
+    info("make screenshot")
+    return os.path.abspath(image_path)
+
+def make_screenshot_part(region, image_path = "./assets/temp_screenshot.png"):
+    image_path = image_path
+    directory = os.path.dirname(image_path)
+
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    src = pyautogui.screenshot(image_path, region=region)
+    src.save(image_path)
+    #src.save("./assets/scr/" + str(datetime.now())[17:].replace(".", "") + ".png")
     info("make screenshot")
     return os.path.abspath(image_path)
 

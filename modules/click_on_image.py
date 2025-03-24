@@ -1,5 +1,6 @@
+import random
 import time
-from pyautogui import click, doubleClick, rightClick
+from pyautogui import click, doubleClick, rightClick, leftClick
 from logging import basicConfig, info, INFO
 import os
 
@@ -8,7 +9,8 @@ from modules.find_image import find_image
 
 mover = mousemover.MouseMover()
 
-LOGS_DIR = os.path.join(os.path.abspath("C:\\Users\\theorr\\PycharmProjects\\evebot\\logs"), "logs")  # Adjusted to point directly to logs directory
+# Создаем директорию для логов относительно текущей директории
+LOGS_DIR = os.path.join(os.getcwd(), "logs")
 LOG_FILE = "logs.log"
 LOGS_PATH = os.path.join(LOGS_DIR, LOG_FILE)
 
@@ -25,10 +27,12 @@ basicConfig(level=INFO,
 
 def hover(image: str, region: tuple = (0, 0, 1920, 1920), duration: float = 0.25, acc: float = 0.8):
     x1, y1, x2, y2 = find_image(image, region, acc=acc)
+    duration = duration * random.randint(80, 120) / 100
     mover.move_to((x1 + x2) / 2, (y1 + y2) / 2, duration)
 
 def lclick_on_image(image: str, region: tuple = (0, 0, 1920, 1920), duration: float = 0.25, acc: float = 0.8):
     x1, y1, x2, y2 = find_image(image, region, acc=acc)
+    duration = duration * random.randint(80, 120) / 100
     mover.move_to((x1 + x2) / 2, (y1 + y2) / 2, duration)
     time.sleep(0.05)
     click()
@@ -38,6 +42,7 @@ def lclick_on_image(image: str, region: tuple = (0, 0, 1920, 1920), duration: fl
 
 def dclick_on_image(image: str, region: tuple = (0, 0, 1920, 1920), duration: float = 0.25, acc: float = 0.8):
     x1, y1, x2, y2 = find_image(image, region, acc=acc)
+    duration = duration * random.randint(80, 120) / 100
     mover.move_to((x1 + x2) / 2, (y1 + y2) / 2, duration)
     time.sleep(0.05)
     doubleClick()
@@ -48,8 +53,15 @@ def dclick_on_image(image: str, region: tuple = (0, 0, 1920, 1920), duration: fl
 
 def rclick_on_image(image: str, region: tuple = (0,0,1920,1920), duration: float = 0.25, acc: float = 0.8):
     x1, y1, x2, y2 = find_image(image, region, acc=acc)
+    duration = duration * random.randint(80, 120) / 100
     mover.move_to((x1 + x2) / 2, (y1 + y2) / 2, duration)
     time.sleep(0.05)
     rightClick()
 
     info(f"rclick click on {image}")
+
+def lclick(x: int, y: int, duration: float = 0.25):
+    duration = duration * random.randint(80, 120) / 100
+    mover.move_to(x, y, duration)
+    time.sleep(0.05)
+    leftClick()
