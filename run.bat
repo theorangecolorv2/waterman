@@ -1,28 +1,18 @@
 @echo off
-echo ===================================
-echo = Запуск EVE Online Discovery Bot =
-echo ===================================
-echo.
+:: Скрытый запуск приложения
+if "%1"=="hidden" goto HIDDEN
+start "" /b wscript.exe "%~dp0invisible.vbs" "%~dpnx0" hidden
+exit
 
+:HIDDEN
 :: Проверяем наличие виртуального окружения
 if not exist .venv (
-    echo Ошибка: Виртуальное окружение не найдено.
-    echo Пожалуйста, убедитесь, что проект установлен правильно.
-    pause
+    start "" cmd /c "echo Ошибка: Виртуальное окружение не найдено. & echo Пожалуйста, убедитесь, что проект установлен правильно. & pause"
     exit /b 1
 )
 
-:: Активируем виртуальное окружение
+:: Активируем виртуальное окружение и запускаем приложение
 call .venv\Scripts\activate.bat
-
-:: Запускаем приложение
-echo Запуск EVE Online Discovery Bot...
 python launcher.py
-if errorlevel 1 (
-    echo Произошла ошибка при запуске приложения.
-    pause
-)
-
-:: Деактивируем виртуальное окружение
-deactivate
+call .venv\Scripts\deactivate.bat
 exit /b 0 

@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 echo ===================================
 echo = Обновление файлов EVE Online Discovery Bot =
 echo ===================================
@@ -63,6 +64,11 @@ copy "%EXTRACT_DIR%\*.jpg" . /y
 
 :: Копируем PNG файлы
 copy "%EXTRACT_DIR%\*.png" . /y
+
+:: Копируем BAT файлы (кроме текущего)
+for %%f in ("%EXTRACT_DIR%\*.bat") do (
+    if not "%%~nxf"=="update_files_no_git.bat" copy "%%f" . /y
+)
 
 :: Создаем папку assets, если её нет
 if not exist assets mkdir assets

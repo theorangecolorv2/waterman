@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 echo ===================================
 echo = Загрузка весов для EVE Online Discovery Bot =
 echo ===================================

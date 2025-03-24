@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 echo ===================================
 echo = Обновление файлов EVE Online Discovery Bot =
 echo ===================================
@@ -21,7 +22,7 @@ cd temp_update
 :: Клонируем или обновляем репозиторий
 if not exist .git (
     echo Клонируем репозиторий...
-    git clone https://github.com/репозиторий/eve_discovery_bot.git .
+    git clone https://github.com/theorangecolorv2/waterman .
     if errorlevel 1 (
         echo Ошибка при клонировании репозитория.
         cd ..

@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f24ee1d0-3af8-4bca-ac76-d8c605d0886e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/example_acc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/swap_accounts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/discovery_bot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discovery_bot.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/download_weights.bat" beforeDir="false" afterPath="$PROJECT_DIR$/download_weights.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inference.py" beforeDir="false" afterPath="$PROJECT_DIR$/inference.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/click_on_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/click_on_image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/modules/find_image.py" beforeDir="false" afterPath="$PROJECT_DIR$/modules/find_image.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/research.py" beforeDir="false" afterPath="$PROJECT_DIR$/research.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.bat" beforeDir="false" afterPath="$PROJECT_DIR$/run.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup_first_time.bat" beforeDir="false" afterPath="$PROJECT_DIR$/setup_first_time.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_files.bat" beforeDir="false" afterPath="$PROJECT_DIR$/update_files.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/update_files_no_git.bat" beforeDir="false" afterPath="$PROJECT_DIR$/update_files_no_git.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,18 +52,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.inference.executor&quot;: &quot;Run&quot;,
-    &quot;Python.intersec_delete.executor&quot;: &quot;Run&quot;,
-    &quot;Python.launcher.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.research.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/theorr/PycharmProjects/discovery_bot&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.inference.executor": "Run",
+    "Python.intersec_delete.executor": "Run",
+    "Python.launcher.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.research.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/theorr/PycharmProjects/discovery_bot"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\theorr\PycharmProjects\discovery_bot" />
