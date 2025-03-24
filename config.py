@@ -19,7 +19,7 @@ ACCOUNTS_FOLDER = r"C:/Users/theorr/PycharmProjects/discovery_bot/accs"
 CURRENT_ACCOUNT = 1
 
 # Лимит повторений цикла
-LOOP_LIMIT = 2
+LOOP_LIMIT = 6
 
 # Выполнять рандомные действия
 RANDOM_ACTIONS = False
