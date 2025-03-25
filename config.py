@@ -23,3 +23,4 @@ LOOP_LIMIT = 6
 
 # Выполнять рандомные действия
 RANDOM_ACTIONS = False
+ #pidorsi

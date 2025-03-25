@@ -69,7 +69,7 @@
       <recent name="C:\Users\theorr\PycharmProjects\discovery_bot\weights" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.1">
+  <component name="RunManager" selected="Python.launcher">
     <configuration name="1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="discovery_bot" />
       <option name="ENV_FILES" value="" />
@@ -182,8 +182,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.1" />
         <item itemvalue="Python.launcher" />
+        <item itemvalue="Python.1" />
         <item itemvalue="Python.research" />
         <item itemvalue="Python.main" />
         <item itemvalue="Python.intersec_delete" />
