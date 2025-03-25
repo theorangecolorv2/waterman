@@ -29,6 +29,7 @@ basicConfig(level=INFO,
 
 def find_image(finding_element: str, region: tuple = (0, 0, 1920, 1920), duration: float = 1, acc: float = 0.8) -> list:
     coordinates = make_template(finding_element, region)
+    print(coordinates)
     info(f"cords of {finding_element} added") if coordinates else info(f"image {finding_element} not found")
     return coordinates
 
@@ -86,6 +87,7 @@ def make_screenshot(image_path = "../assets/temp_screenshot.png") -> str:
 
     src = pyautogui.screenshot(image_path)
     src.save(image_path)
+    src.save("../CHECK.png")
     info("make screenshot")
     return os.path.abspath(image_path)
 
