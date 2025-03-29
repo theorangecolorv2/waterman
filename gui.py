@@ -322,7 +322,8 @@ class BotConfigGUI:
             with open("config.py", 'w', encoding='utf-8') as f:
                 f.write('#!/usr/bin/env python\n# -*- coding: utf-8 -*-\n\n')
                 f.write('"""\nФайл с глобальными настройками для бота\n"""\n\n')
-                f.write('import os\n\n')
+                f.write('import os\n')
+                f.write('import re # Добавлено для определения кол-ва аккаунтов\n\n') # Добавлено
                 f.write(f'# Путь к лаунчеру EVE Online\n')
                 f.write(f'# Используем переменную среды LOCALAPPDATA для получения пути к локальным данным приложений\n')
                 f.write(f'LAUNCHER_PATH = r"{config["launcher_path"]}"\n\n')
@@ -334,14 +335,18 @@ class BotConfigGUI:
                 f.write(f'# Лимит повторений цикла\n')
                 f.write(f'LOOP_LIMIT = {config["loop_limit"]}\n\n')
                 f.write(f'# Выполнять рандомные действия\n')
-                f.write(f'RANDOM_ACTIONS = {config["random_actions"]}\n')
-                f.write(f' #pidorsi\n')
-            
+                # Проверяем наличие ключа перед записью для большей надежности
+                random_actions_value = config.get("random_actions", False) # Получаем значение или False по умолчанию
+                f.write(f'RANDOM_ACTIONS = {random_actions_value}\n')
+                f.write(f'#pidorsi\n') # Перенес комментарий на новую строку для ясности
+
             # Перезагружаем модуль
             import config
             importlib.reload(config)
+        except KeyError as e:
+             self.log(f"Ошибка обновления config.py: Отсутствует ключ {e} в переданном словаре config.")
         except Exception as e:
-            self.log(f"Ошибка обновления config.py: {str(e)}")
+            self.log(f"Ошибка обновления config.py: {type(e).__name__}: {str(e)}")
     
     def load_config(self):
         """Загружает настройки из файла конфигурации"""
@@ -356,8 +361,21 @@ class BotConfigGUI:
                 self.current_account_var.set(config.get("current_account", CURRENT_ACCOUNT))
                 self.loop_limit_var.set(config.get("loop_limit", LOOP_LIMIT))
                 self.random_actions_var.set(config.get("random_actions", RANDOM_ACTIONS))
+        except (json.JSONDecodeError, FileNotFoundError) as e:
+             self.log(f"Ошибка загрузки файла конфигурации {self.config_file}: {e}. Используются значения по умолчанию.")
+             # Можно оставить значения по умолчанию или попытаться загрузить из config.py напрямую
+             try:
+                 import config
+                 self.launcher_path_var.set(config.LAUNCHER_PATH)
+                 self.accounts_folder_var.set(config.ACCOUNTS_FOLDER)
+                 self.current_account_var.set(config.CURRENT_ACCOUNT)
+                 self.loop_limit_var.set(config.LOOP_LIMIT)
+                 self.random_actions_var.set(config.RANDOM_ACTIONS)
+             except ImportError:
+                 self.log("Не удалось загрузить настройки даже из config.py")
+
         except Exception as e:
-            self.log(f"Ошибка загрузки настроек: {str(e)}")
+            self.log(f"Непредвиденная ошибка загрузки настроек: {str(e)}")
     
     def start_bot(self):
         """Запускает бота в отдельном потоке"""
@@ -465,28 +483,46 @@ class BotConfigGUI:
                         
                         # Увеличиваем номер аккаунта (инкрементация вынесена на уровень выше)
                         new_account = current_account + 1
-                        if new_account > 30:  # Предполагаем, что у нас не более 10 аккаунтов
-                            self.log("Достигнут максимальный номер аккаунта, завершаем работу")
+                        # TODO: Сделать максимальное количество аккаунтов настраиваемым
+                        max_accounts = 30 # Примерное максимальное количество аккаунтов
+                        try:
+                            # Пытаемся определить максимальное количество аккаунтов по файлам
+                            account_files = [f for f in os.listdir(config.ACCOUNTS_FOLDER) if f.startswith("account_") and f.endswith(".png")]
+                            if account_files:
+                                numbers = [int(re.search(r'account_(\d+)\.png', f).group(1)) for f in account_files if re.search(r'account_(\d+)\.png', f)]
+                                if numbers:
+                                    max_accounts = max(numbers)
+                                    self.log(f"Обнаружено максимальное количество аккаунтов: {max_accounts}")
+                        except Exception as e:
+                            self.log(f"Не удалось определить максимальное количество аккаунтов по файлам: {e}")
+
+                        if new_account > max_accounts:
+                            self.log(f"Достигнут максимальный номер аккаунта ({max_accounts}), завершаем работу")
                             continue_processing = False
                         else:
                             self.log(f"Меняем аккаунт #{current_account} на аккаунт #{new_account}")
                             
-                            # Обновляем конфигурацию
+                            # Обновляем конфигурацию в памяти
                             config.CURRENT_ACCOUNT = new_account
-                            self.current_account_var.set(new_account)
+                            self.current_account_var.set(new_account) # Обновляем и в GUI
                             
-                            # Сохраняем изменения в конфигурационном файле
+                            # Сохраняем изменения в конфигурационном файле, включая RANDOM_ACTIONS
                             self.update_config_module({
-                                "launcher_path": config.LAUNCHER_PATH, 
+                                "launcher_path": config.LAUNCHER_PATH,
                                 "accounts_folder": config.ACCOUNTS_FOLDER,
                                 "current_account": new_account,
-                                "loop_limit": config.LOOP_LIMIT
+                                "loop_limit": config.LOOP_LIMIT,
+                                "random_actions": config.RANDOM_ACTIONS # <<< ДОБАВЛЕНО: передаем random_actions
                             })
                             
                             # Выполняем смену аккаунта
                             self.log(f"Выполняем смену на аккаунт #{new_account}")
-                            swap_accounts(launcher_path=config.LAUNCHER_PATH, current_account=new_account)
-                            time.sleep(10)  # Даем время на запуск игры
+                            if not swap_accounts(launcher_path=config.LAUNCHER_PATH, current_account=new_account):
+                                self.log(f"Не удалось сменить аккаунт на #{new_account}. Прерывание работы.")
+                                continue_processing = False
+                            else:
+                                self.log(f"Смена аккаунта на #{new_account} выполнена успешно.")
+                                time.sleep(10)  # Даем время на запуск игры
                     elif result == "error":
                         self.log("Работа завершена из-за ошибки в процессе выполнения")
                         continue_processing = False

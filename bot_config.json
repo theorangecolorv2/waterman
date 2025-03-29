@@ -1,7 +1,7 @@
 {
     "launcher_path": "C:\\Users\\theorr\\AppData\\Local\\eve-online\\app-1.8.0\\eve-online.exe",
     "accounts_folder": "C:/Users/theorr/PycharmProjects/discovery_bot/accs",
-    "current_account": 1,
-    "loop_limit": 6,
+    "current_account": 4,
+    "loop_limit": 100,
     "random_actions": false
 }

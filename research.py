@@ -4,16 +4,14 @@ import random
 import os
 import sys
 
+from matplotlib.pyplot import imshow
+
 from modules.click_on_image import lclick, lclick_on_image
 from modules.find_image import find_image, make_screenshot, make_screenshot_part, exists
 from inference import analyze_image
 from config import LOOP_LIMIT, RANDOM_ACTIONS
 
-#gam betta 33.7 lvl on the start 36.7 finish => 3 lvl per 100 ||
-# || 36.7 start, 40 finish, 100 lim || 40 start w 97.4%. 45.1 end w 98.9% (bug dt??) >100
-# persif 3.2 start, lim after 9, 4.7 end | 4.7 start, 7.9 end, 40 lim
-#warden peterson 9 start, 14.1 end, 99 lim
-#armenian 15.2 start w 86.9%, 19.7 finish w 90.1%
+
 def account_process():
     time.sleep(1)
 
@@ -53,6 +51,7 @@ def account_process():
     try:
         while working:
             current_img = make_screenshot_part(region, image_path="./assets/662x662.png")
+
             analyze_image(current_img, corner)
             time.sleep(0.5)
 
