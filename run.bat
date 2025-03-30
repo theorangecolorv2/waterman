@@ -1,18 +1,29 @@
 @echo off
-:: Скрытый запуск приложения
+:: --- Логика запуска ---
+:: Устанавливаем кодировку для корректного отображения кириллицы
+chcp 65001 >nul
 if "%1"=="hidden" goto HIDDEN
-start "" /b wscript.exe "%~dp0invisible.vbs" "%~dpnx0" hidden
+
+title EVE Discovery Bot Loader
+cls
+
+echo Загрузка бота...
+timeout /t 1 /nobreak > nul
+
+:: Запускаем в скрытом режиме
+start "" "%~dp0invisible.vbs" "%~dpnx0" hidden
 exit
 
 :HIDDEN
 :: Проверяем наличие виртуального окружения
 if not exist .venv (
-    start "" cmd /c "echo Ошибка: Виртуальное окружение не найдено. & echo Пожалуйста, убедитесь, что проект установлен правильно. & pause"
+    echo Error: Virtual environment not found. > error_log.txt
     exit /b 1
 )
 
-:: Активируем виртуальное окружение и запускаем приложение
+:: Запускаем приложение
 call .venv\Scripts\activate.bat
 python launcher.py
 call .venv\Scripts\deactivate.bat
+
 exit /b 0 

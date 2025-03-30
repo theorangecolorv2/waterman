@@ -53,7 +53,7 @@ def account_process():
             current_img = make_screenshot_part(region, image_path="./assets/662x662.png")
 
             analyze_image(current_img, corner)
-            time.sleep(0.5)
+            time.sleep(0.3)
 
             if not exists("./assets/submit.png"):
                 print("Не найдена кнопка submit.png")
@@ -81,9 +81,9 @@ def account_process():
                 continue
                 
             lclick_on_image("./assets/continue.png")
-            time.sleep(0.4)
+            time.sleep(0.2)
             lclick_on_image("./assets/continue.png")
-            time.sleep(1.1 + random.random() + random.randint(0, 3))
+            time.sleep(1 + random.randint(0, 2))
             if RANDOM_ACTIONS and random.randint(0, 50) == 42:
                 if exists("./assets/rewards.png"):
                     print("Выполняю рандомное действие: просмотр наград")
